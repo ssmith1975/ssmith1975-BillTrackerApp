@@ -1,0 +1,19 @@
+<div class="my-1">
+    <h3 class="h3">{{title}}</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr><th>Name</th><th>Account Number</th><th>Phone</th><th>Start Date</th></tr>   
+        </thead>
+        <tbody>
+            <tr *ngFor="let company of getCompanies()">
+                <td>{{company.Name}}</td>
+                <td>{{company.AccountNumber}}</td>
+                <td>{{company.Phone}}</td>
+                <td>{{company.StartDate |date}}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

@@ -11,6 +11,8 @@ export class AppComponent {
   model = new AppModel();
   test = this.model.user;
 
+
+
   getName(){
     return this.model.user;
   }
