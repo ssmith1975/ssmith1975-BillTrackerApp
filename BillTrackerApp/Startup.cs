@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using BillTrackerApp.Data;
 
 namespace BillTrackerApp
 {
@@ -46,7 +47,23 @@ namespace BillTrackerApp
                 app.UseHsts();
             }
 
-    app.UseHttpsRedirection();
+            // Create a service scope to get an ApplicationDBContext instance using DI
+            using (var serviceScope =
+                app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+
+                var dbContext = serviceScope.ServiceProvider.GetService<BillTrackerContext>();
+
+                // Create the Db if it doesn't exist and applies any pending migration.
+                dbContext.Database.Migrate();
+
+                // Seed the Db.
+                DbInitializer.Initialize(dbContext);
+
+            } // end using
+
+
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
