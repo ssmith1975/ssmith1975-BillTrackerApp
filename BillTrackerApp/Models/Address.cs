@@ -18,9 +18,12 @@ namespace BillTrackerApp.Models
         public string State { get; set; }
         [MaxLength(50)]
         public string Country { get; set; }
-
+        [MaxLength(15)]
+        public string Zip { get; set; }
         public Company Company { get; set; }
+    
         public int CompanyID { get; set; }
+
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BillTrackerApp.Models;
+//using Microsoft.EntityFrameworkCore;
 
 namespace BillTrackerApp.Data
 {
@@ -11,6 +12,7 @@ namespace BillTrackerApp.Data
         public static void Initialize(BillTrackerContext context)
         {
             //context.Database.EnsureCreated();
+           
 
             // Look for any students.
             if (context.Invoices.Any())
