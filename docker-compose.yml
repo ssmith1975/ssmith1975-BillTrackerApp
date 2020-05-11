@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  billtrackerapp.api:
+    image: ${DOCKER_REGISTRY-}billtrackerappapi
+    build:
+      context: .
+      dockerfile: BillTrackerApp.API/Dockerfile

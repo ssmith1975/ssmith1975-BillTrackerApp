@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillTrackerApp.API", "BillTrackerApp.API\BillTrackerApp.API.csproj", "{019A3353-509C-477C-B720-A807BD35D388}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{019A3353-509C-477C-B720-A807BD35D388}.Release|Any CPU.Build.0 = Release|Any CPU
 		{019A3353-509C-477C-B720-A807BD35D388}.Release|x64.ActiveCfg = Release|Any CPU
 		{019A3353-509C-477C-B720-A807BD35D388}.Release|x64.Build.0 = Release|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Debug|x64.Build.0 = Debug|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Release|x64.ActiveCfg = Release|Any CPU
+		{2B37AC8F-DCA9-4880-9C86-08B0595D7D1C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

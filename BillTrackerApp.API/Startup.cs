@@ -29,8 +29,8 @@ namespace BillTrackerApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BillTrackerContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration["ConnectionStrings:BillTrackerDBConnection"]));            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -55,7 +55,7 @@ namespace BillTrackerApp.API
                 var dbContext = serviceScope.ServiceProvider.GetService<BillTrackerContext>();
 
                 // Create the Db if it doesn't exist and applies any pending migration.
-                dbContext.Database.Migrate();
+               // dbContext.Database.Migrate();
 
                 // Seed the Db.
                 DbInitializer.Initialize(dbContext);
