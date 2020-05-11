@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BillTrackerApp.Models
+namespace BillTrackerApp.API.Models
 {
     public class Invoice
     {

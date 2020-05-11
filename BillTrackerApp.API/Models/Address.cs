@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BillTrackerApp.Models
+namespace BillTrackerApp.API.Models
 {
     public class Address
     {

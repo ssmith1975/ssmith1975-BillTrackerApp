@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace BillTrackerApp
+namespace BillTrackerApp.API
 {
     public class Program
     {

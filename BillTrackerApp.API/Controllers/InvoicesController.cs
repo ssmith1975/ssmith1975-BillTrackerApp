@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BillTrackerApp.Data;
-using BillTrackerApp.Models;
+using BillTrackerApp.API.Data;
+using BillTrackerApp.API.Models;
 
-namespace BillTrackerApp.Controllers
+namespace BillTrackerApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

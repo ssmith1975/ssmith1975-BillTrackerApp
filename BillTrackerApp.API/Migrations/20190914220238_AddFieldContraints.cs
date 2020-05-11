@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BillTrackerApp.Migrations
+namespace BillTrackerApp.API.Migrations
 {
     public partial class AddFieldContraints : Migration
     {

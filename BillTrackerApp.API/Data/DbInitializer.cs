@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BillTrackerApp.Models;
+using BillTrackerApp.API.Models;
 //using Microsoft.EntityFrameworkCore;
 
-namespace BillTrackerApp.Data
+namespace BillTrackerApp.API.Data
 {
     public static class DbInitializer
     {

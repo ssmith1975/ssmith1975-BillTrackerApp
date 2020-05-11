@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BillTrackerApp.Migrations
+namespace BillTrackerApp.API.Migrations
 {
     public partial class InitialCreate : Migration
     {
