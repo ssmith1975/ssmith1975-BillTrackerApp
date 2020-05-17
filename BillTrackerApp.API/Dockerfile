@@ -12,7 +12,9 @@ WORKDIR "/src/BillTrackerApp.API"
 RUN dotnet build "BillTrackerApp.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "BillTrackerApp.API.csproj" -c Release -o /app/publish
+# RUN dotnet publish "BillTrackerApp.API.csproj" -c Release -o /app/publish
+WORKDIR /src
+RUN dotnet publish "BillTrackerApp.sln" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
