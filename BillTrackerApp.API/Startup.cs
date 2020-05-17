@@ -55,7 +55,7 @@ namespace BillTrackerApp.API
                 var dbContext = serviceScope.ServiceProvider.GetService<BillTrackerContext>();
 
                 // Create the Db if it doesn't exist and applies any pending migration.
-               // dbContext.Database.Migrate();
+                dbContext.Database.Migrate();
 
                 // Seed the Db.
                 DbInitializer.Initialize(dbContext);
