@@ -21,7 +21,7 @@ jobs:
         dotnet-version: '2.1.804'
 
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build "BillTrackerApp.sln" --configuration Release
 
     - name: dotnet publish
       run: dotnet publish "BillTrackerApp.sln" -c Release -o ${{env.DOTNET_ROOT}}/myapp
