@@ -31,7 +31,7 @@ namespace BillTrackerApp.API
             services.AddDbContext<BillTrackerContext>(options =>
                 //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
                 options.UseSqlServer(Configuration["ConnectionStrings:BillTrackerDBConnection"]));            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
