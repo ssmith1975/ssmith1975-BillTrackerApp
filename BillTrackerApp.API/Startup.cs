@@ -30,7 +30,7 @@ namespace BillTrackerApp.API
         {
             services.AddDbContext<BillTrackerContext>(options =>
                 //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-                options.UseSqlServer(Configuration["ConnectionStrings:BillTrackerDBConnection"]));            
+                options.UseMySQL(Configuration["ConnectionStrings:BillTrackerDBConnection"]));            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -43,6 +43,8 @@ namespace BillTrackerApp.API
             }
             else
             {
+                
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }

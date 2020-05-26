@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BillTrackerApp.API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +12,10 @@ namespace BillTrackerApp.API.Migrations
                 columns: table => new
                 {
                     CompanyID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    AccountNumber = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
+                        .Annotation("MySQL:AutoIncrement", true),
+                    Name = table.Column<string>(maxLength: 500, nullable: true),
+                    AccountNumber = table.Column<string>(maxLength: 100, nullable: true),
+                    Phone = table.Column<string>(maxLength: 30, nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -29,12 +28,13 @@ namespace BillTrackerApp.API.Migrations
                 columns: table => new
                 {
                     AddressID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    StreetAddress1 = table.Column<string>(nullable: true),
-                    StreetAddress2 = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true),
+                        .Annotation("MySQL:AutoIncrement", true),
+                    StreetAddress1 = table.Column<string>(maxLength: 500, nullable: true),
+                    StreetAddress2 = table.Column<string>(maxLength: 500, nullable: true),
+                    City = table.Column<string>(maxLength: 200, nullable: true),
+                    State = table.Column<string>(maxLength: 50, nullable: true),
+                    Country = table.Column<string>(maxLength: 50, nullable: true),
+                    Zip = table.Column<string>(maxLength: 15, nullable: true),
                     CompanyID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -53,14 +53,14 @@ namespace BillTrackerApp.API.Migrations
                 columns: table => new
                 {
                     InvoiceID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:AutoIncrement", true),
                     BillingPeriod = table.Column<DateTime>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
                     AmountPaid = table.Column<decimal>(nullable: false),
                     Balance = table.Column<decimal>(nullable: false),
                     DatePaid = table.Column<DateTime>(nullable: false),
                     AmountDue = table.Column<decimal>(nullable: false),
-                    ConfirmationNumber = table.Column<string>(nullable: true),
+                    ConfirmationNumber = table.Column<string>(maxLength: 100, nullable: true),
                     Note = table.Column<string>(nullable: true),
                     CompanyID = table.Column<int>(nullable: false)
                 },

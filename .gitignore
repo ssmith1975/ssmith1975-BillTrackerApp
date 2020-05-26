@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*/Properties/launchSettings.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -42,6 +43,12 @@ Generated\ Files/
 # NUNIT
 *.VisualState.xml
 TestResult.xml
+
+# Docker files
+#/docker-compose.yml
+/docker-compose.override*.yml
+/.env
+
 
 # Build Results of an ATL Project
 [Dd]ebugPS/

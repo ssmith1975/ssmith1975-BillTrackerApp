@@ -6,3 +6,5 @@ services:
     build:
       context: .
       dockerfile: BillTrackerApp.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production

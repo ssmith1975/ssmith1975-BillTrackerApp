@@ -31,10 +31,12 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values",
       "environmentVariables": {
+        "DeveloperTool": "VisualStudio",
         "ASPNETCORE_URLS": "https://+:443;http://+:80",
-        "ASPNETCORE_HTTPS_PORT": "44380"
+        "ASPNETCORE_HTTPS_PORT": "44380",
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "httpPort": 44389,
+      "httpPort": 44388,
       "useSSL": true,
       "sslPort": 44380
     }
