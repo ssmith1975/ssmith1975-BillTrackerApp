@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BillTrackerApp.API.Controllers
 {
     [Route("api/[controller]")]
+    [Route("/")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
