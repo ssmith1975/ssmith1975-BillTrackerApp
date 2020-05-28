@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
+EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
 WORKDIR /src
@@ -20,4 +20,4 @@ RUN dotnet publish "BillTrackerApp.API.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "BillTrackerApp.API.dll","--port", "80"]
+ENTRYPOINT ["dotnet", "BillTrackerApp.API.dll"]
