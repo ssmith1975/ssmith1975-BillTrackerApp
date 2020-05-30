@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Extensions.Configuration.AzureKeyVault;
+using Microsoft.Extensions.Hosting;
 
 namespace BillTrackerApp.API
 {

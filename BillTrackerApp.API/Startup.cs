@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -30,12 +31,16 @@ namespace BillTrackerApp.API
         {
             services.AddDbContext<BillTrackerContext>(options =>
                 //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-                options.UseMySQL(Configuration["ConnectionStrings:BillTrackerDBConnection"]));            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                options.UseMySQL(Configuration["ConnectionStrings:BillTrackerDBConnection"]));
+            services.AddMvc();
+            services.AddControllers();
+            //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // MvcOptions.EnableEndpointRouting = false;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -65,8 +70,19 @@ namespace BillTrackerApp.API
             } // end using
 
 
+            //app.UseHttpsRedirection();
+            //app.UseMvc();
+
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
