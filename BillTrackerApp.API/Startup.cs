@@ -29,14 +29,10 @@ namespace BillTrackerApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BillTrackerContext>(options =>
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BillTrackerContext>(options =>               
                 options.UseMySQL(Configuration["ConnectionStrings:BillTrackerDBConnection"]));
             services.AddMvc();
             services.AddControllers();
-            //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            // MvcOptions.EnableEndpointRouting = false;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,8 +44,6 @@ namespace BillTrackerApp.API
             }
             else
             {
-                
-
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -68,10 +62,6 @@ namespace BillTrackerApp.API
                 DbInitializer.Initialize(dbContext);
 
             } // end using
-
-
-            //app.UseHttpsRedirection();
-            //app.UseMvc();
 
             app.UseHttpsRedirection();
 

@@ -13,13 +13,16 @@ using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.Hosting;
+using System.Configuration;
 
 namespace BillTrackerApp.API
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
+
             CreateWebHostBuilder(args).Build().Run();
         }
 
@@ -27,29 +30,71 @@ namespace BillTrackerApp.API
             WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((context, config) =>
             {
-                var builtConfig = config.Build();    
-                
-                if (context.HostingEnvironment.IsProduction())
+
+                var loggerFactory = LoggerFactory.Create(builder =>
                 {
+                    builder
+                        .AddConsole();
+                });
 
-                    string keyvault = builtConfig["keyvault"];
-                    string RunAs = builtConfig["RunAs"];
-                    string AppId = builtConfig["AppId"];
-                    string TenantId = builtConfig["TenantId"];
-                    string AppKey = builtConfig["AppKey"];
+                ILogger logger = loggerFactory.CreateLogger<Program>();
+                logger.LogInformation("Setting up app configurations...");
 
-                    var azureServiceTokenProvider = new AzureServiceTokenProvider(
-                        $"RunAs={RunAs};AppId={AppId};TenantId={TenantId};AppKey={AppKey}"
-                    );
+                var builtConfig = config.Build();
+
+                try
+                {
+                    AzureServiceTokenProvider azureServiceTokenProvider;
+                    string keyvaultConnectionString = null;
+                    string KeyVault = builtConfig["KeyVault"];
+                    bool useKey;
+
+                    if (String.IsNullOrEmpty(KeyVault))
+                    {
+                        throw new ConfigurationErrorsException("'KeyVault' property is missing from configuration");
+                    }
+
+                    Boolean.TryParse(builtConfig["UseKey"], out useKey);
+
+                    if (useKey)
+                    {
+                        List<string> keys = new List<string> { "RunAs", "AppId", "TenantId", "AppKey" };
+
+                        keys.ForEach(key =>
+                        {
+
+                            if (String.IsNullOrEmpty(builtConfig[key]))
+                            {
+                                throw new ConfigurationErrorsException($"'{key}' property is missing from configuration");
+                            }
+
+                            keyvaultConnectionString += $"{key}={builtConfig[key]};";
+                        }); // end forEach
+
+                    } // end if
+
+                    azureServiceTokenProvider = new AzureServiceTokenProvider(keyvaultConnectionString);
+
                     var keyVaultClient = new KeyVaultClient(
                         new KeyVaultClient.AuthenticationCallback(
                             azureServiceTokenProvider.KeyVaultTokenCallback));
 
                     config.AddAzureKeyVault(
-                        $"https://{keyvault}.vault.azure.net/",
+                        $"https://{KeyVault}.vault.azure.net/",
                         keyVaultClient,
                         new DefaultKeyVaultSecretManager());
+
+                    logger.LogInformation("Configurations completed successfully...");
                 }
+                catch (Exception ex)
+                {
+
+                    logger.LogError($"Error while retrieving content from key vault:\n\t{ex.Message}\n");
+                    logger.LogError(ex.StackTrace);
+
+                    throw ex;
+                } // end try/catch
+
             })
                 .UseStartup<Startup>();
     }
