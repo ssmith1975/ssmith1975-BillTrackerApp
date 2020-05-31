@@ -10,7 +10,8 @@ Clone this app from GitHub.
 
 In Azure, make sure you create an system principal identity for the app web service and grant it permission to access the vault. Create a connection string as
 
-Key|Secret
+Create a new secret for the connection string:
+Name|Value
 ------------ | -------------
 ConnectionStrings--BillTrackerDBConnection|Server={your database server name}.mysql.database.azure.com; Port=3306; Database={your_database}; Uid={your username}; Pwd={your password}; SslMode=Preferred;
  
@@ -18,6 +19,7 @@ ConnectionStrings--BillTrackerDBConnection|Server={your database server name}.my
 
 Add Manage User Secrets to store Azure secrets. Include the following in your secrets.json file: 
 
+### Local Environment 
 ```
 {
   "KeyVault": "<your key vault name>",
@@ -29,7 +31,11 @@ Add Manage User Secrets to store Azure secrets. Include the following in your se
 }
 
 ```
-
+### Azure App Service Configuration
+{
+  "KeyVault": "<your key vault name>",
+  "UseKey": "false",
+}
 
 
 ## Usage
