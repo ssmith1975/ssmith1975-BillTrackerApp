@@ -1,15 +1,15 @@
 export default interface Invoice {
-    InvoiceID:Number;
-    BillingPeriod: Date;
-    DueDate: Date;
-    AmountPaid: Number;
-    Balance: Number;
-    DatePaid: Date;
-    AmountDue: Number;
-    ConfirmationNumber: String;
-    Note: String;
+    invoiceID: number;
+    billingPeriod: Date;
+    dueDate: Date;
+    amountPaid: number;
+    balance: number;
+    datePaid: Date;
+    amountDue: number;
+    confirmationNumber: String;
+    note: String;
     //Company: Company;
-    CompanyID: Number;
+    companyID: number;
 
 
 }
