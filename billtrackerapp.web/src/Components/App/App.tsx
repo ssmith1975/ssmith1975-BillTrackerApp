@@ -21,6 +21,12 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './MenuItems';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link as RoutLink
+} from "react-router-dom";
 
 import Dashboard from '../Dashboard/Dashboard';
 
@@ -29,7 +35,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Bill Tracker App
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -122,7 +128,6 @@ function App() {
       setOpen(false);
     };
   
-
   return (
     <div className="App">
     <div className={classes.root}>
@@ -169,10 +174,26 @@ function App() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
 
+          <Router>
+            <Switch>
+              <Route exact path="/dashboard">
+                <Dashboard />
+              </Route>
+              <Route path="/reports">
+                Reports
+              </Route>             
+              <Route path="/invoices">
+                Invoice
+              </Route>
+              <Route path="/companies">
+                Companies
+              </Route>
+              <Route exact path="/">
+                <Dashboard />
+              </Route>             
+            </Switch>
+          </Router>
 
-
-
-          <Dashboard />
 
           <Box pt={4}>
             <Copyright />
