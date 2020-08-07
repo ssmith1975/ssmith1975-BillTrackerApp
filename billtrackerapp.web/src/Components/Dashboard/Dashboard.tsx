@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -23,10 +23,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export default function Dashboard() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const [time, setTime] = useState((new Date()).toTimeString());
+  useEffect (() => {
+    console.log('rending useEffect....');
+    console.log(' ');
+  
+    //console.log(setTime(Date.now()));
+    console.log(time);
+    console.log(' ');
+  }, [time]);
 
   return (
 
