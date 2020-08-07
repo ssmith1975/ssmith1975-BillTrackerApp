@@ -144,7 +144,7 @@ function App() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Bill Tracker App
+            Bill Tracker App *
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
