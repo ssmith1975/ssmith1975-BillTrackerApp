@@ -31,6 +31,7 @@ namespace BillTrackerApp.API
         {
             services.AddDbContext<BillTrackerContext>(options =>               
                 options.UseMySQL(Configuration["ConnectionStrings:BillTrackerDBConnection"]));
+            services.AddCors();
             services.AddMvc();
             services.AddControllers();
         }
@@ -41,6 +42,8 @@ namespace BillTrackerApp.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(builder =>
+                    builder.WithOrigins(Configuration["LocalURL"]));
             }
             else
             {

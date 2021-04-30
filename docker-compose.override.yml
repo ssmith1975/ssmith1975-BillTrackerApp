@@ -6,6 +6,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=44389
+      - LocalURL=http://localhost:3000
     ports:
       - "51263:80"
       - "44389:443"
