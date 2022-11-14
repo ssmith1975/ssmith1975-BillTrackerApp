@@ -42,3 +42,22 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Installing SSL Certificate for Local Environment
+
+1. In the root of the application, open up a command terminal, such as _Git Bash_ as an _Administrator_ user.
+2. Run `npm install -g mkcert` to install _mkcert_ globally.
+3. Run `mkcert localhost`
+   * If you see a message that says the following:
+    > The local CA is now installed in the system trust store! ⚡️<br />
+    >The local CA is now installed in Java's trust store! ☕️
+   * Run `mkcert -install`
+4. The above commands should create both a _localhost.pem_ and  _localhost-key.pem_ files.
+5. In your _.env.local_ file located in the root folder of the app, make sure these settings appear:
+```
+HTTPS=true 
+SSL_CRT_FILE=localhost.pem 
+SSL_KEY_FILE=localhost-key.pem
+```
+
+* Your React app should run as `https://localhost:3000` without displaying a _This site can’t provide a secure connection_ message in the browser.
